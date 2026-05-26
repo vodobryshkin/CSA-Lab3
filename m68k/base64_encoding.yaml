@@ -1,0 +1,18 @@
+name: base64_encoding_hello
+
+limit: 500
+memory_size: 0x500
+
+memory_mapped_io:
+  0x80: [72, 101, 108, 108, 111, 33, 10]
+  0x84: []
+
+reports:
+  - name: Last
+    slice: last
+    view: |
+      D0={D0:hex} D1={D1:hex} D2={D2:hex} D3={D3:hex}
+      input_left_dec={io:0x80:dec}
+      output_port={io:0x84:dec}
+      result_buffer={memory:0x00:0x10}
+      temp_buffer={memory:0x400:0x408}
